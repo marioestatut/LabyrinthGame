@@ -1,6 +1,6 @@
 /**
  * Juego de laberintos. Consiste en presentar tres laberintos y que el usuario pueda intenrar resolverlos.
- *
+ * 
  * Autor: Mario López
  */
 
@@ -15,7 +15,7 @@ let noob = [
   ["#", "#", "#", "#", "#", "#"],
   ["#", "#", " ", " ", " ", "#"],
   ["#", "u", " ", "#", "o", "#"],
-  ["#", "#", "#", "#", "#", "#"],
+  ["#", "#", "#", "#", "#", "#"]
 ];
 let pro = [
   ["#", "#", "#", "#", "#", "#", "#", "#"],
@@ -23,7 +23,7 @@ let pro = [
   ["#", " ", "#", "#", "#", "#", " ", "#"],
   ["#", " ", "#", "#", " ", "#", " ", "#"],
   ["#", " ", " ", " ", " ", " ", " ", "#"],
-  ["#", "#", "#", "#", "#", "#", "#", "#"],
+  ["#", "#", "#", "#", "#", "#", "#", "#"]
 ];
 let hardcore = [
   ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
@@ -33,7 +33,7 @@ let hardcore = [
   ["#", " ", " ", "#", "#", "o", "#", "#", " ", "#"],
   ["#", " ", " ", " ", "#", "#", "#", "#", " ", "#"],
   ["#", "u", "#", " ", " ", " ", " ", " ", " ", "#"],
-  ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+  ["#", "#", "#", "#", "#", "#", "#", "#", "#", "#"]
 ];
 
 while (game === true) {
@@ -76,7 +76,7 @@ while (game === true) {
 
   if (menuOption === 1) {
     maze = noob;
-    mazeName = "NOOB LABYRINTH";
+    mazeName =  "NOOB LABYRINTH";
   } else if (menuOption === 2) {
     maze = pro;
     mazeName = "PRO LABYRINTH";
@@ -128,99 +128,100 @@ while (game === true) {
         }
       }
 
-    while (subMenuOption === 2) {
-      console.log();
-      console.log(
-        " |--------------------------------------|\n",
-        "|----  1.          Arriba          ----|\n",
-        "|----  2.         Izquierda        ----|\n",
-        "|----  3.           Abajo          ----|\n",
-        "|----  4.          Derecha         ----|\n",
-        "|--------------------------------------|"
-      );
-      console.log();
-      jugada = Number.parseInt(prompt("Escoge tu movimiento: "));
-      console.clear();
-
-      switch (jugada) {
-        case 1: // Mover arriba
-          if (playerRow > 0 && maze[playerRow - 1][playerCol] !== "#") {
-            maze[playerRow][playerCol] = " ";
-            playerRow--;
-            maze[playerRow][playerCol] = "u";
-          } else {
-            console.log("¡Por ahí hay una pared!");
-            console.log();
-          }
-          move += 1;
-          break;
-        case 2: // Mover izquierda
-          if (playerCol > 0 && maze[playerRow][playerCol - 1] !== "#") {
-            maze[playerRow][playerCol] = " ";
-            playerCol--;
-            maze[playerRow][playerCol] = "u";
-          } else {
-            console.log("¡Por ahí hay una pared!");
-            console.log();
-          }
-          move += 1;
-          break;
-        case 3: // Mover abajo
-          if (playerRow < maze.length - 1 && maze[playerRow + 1][playerCol] !== "#") {
-            maze[playerRow][playerCol] = " ";
-            playerRow++;
-            maze[playerRow][playerCol] = "u";
-          } else {
-            console.log("¡Por ahí hay una pared!");
-            console.log();
-          }
-          move += 1;
-          break;
-        case 4: // Mover derecha
-          if (playerCol < maze[0].length - 1 && maze[playerRow][playerCol + 1] !== "#") {
-            maze[playerRow][playerCol] = " ";
-            playerCol++;
-            maze[playerRow][playerCol] = "u";
-          } else {
-            console.log("¡Por ahí hay una pared!");
-            console.log();
-          }
-          move += 1;
-          break;
-      }
-
-      totalCasillas = casillaO + casillaU + way + 2;
-
-      // Victoria
-      if (playerRow === exitRow && playerCol === exitCol) {
+      while (subMenuOption === 2) {
+        console.log();
+        console.log(
+          " |--------------------------------------|\n",
+          "|----  1.          Arriba          ----|\n",
+          "|----  2.         Izquierda        ----|\n",
+          "|----  3.           Abajo          ----|\n",
+          "|----  4.          Derecha         ----|\n",
+          "|--------------------------------------|"
+        );
+        console.log();
+        jugada = Number.parseInt(prompt("Escoge tu movimiento: "));
         console.clear();
-        console.log("¡Felicidades, has encontrado la salida!");
-        console.log();
-        console.log("Te has pasado el laberinto con", move, "movimientos de los", totalCasillas, "que puedes hacer.");
-        console.log();
-        prompt("Presiona enter para volver...");
-        subMenuOption = 3; // Salir del juego
-        back = false;
-      } else {
-        for (let i = 0; i < maze.length; i++) {
-          console.log(maze[i].join(" "));
+
+        switch (jugada) {
+          case 1: // Mover arriba
+            if (playerRow > 0 && maze[playerRow - 1][playerCol] !== "#") {
+              maze[playerRow][playerCol] = " ";
+              playerRow--;
+              maze[playerRow][playerCol] = "u";
+            } else {
+              console.log("¡Por ahí hay una pared!");
+              console.log();
+            }
+            move += 1;
+            break;
+          case 2: // Mover izquierda
+            if (playerCol > 0 && maze[playerRow][playerCol - 1] !== "#") {
+              maze[playerRow][playerCol] = " ";
+              playerCol--;
+              maze[playerRow][playerCol] = "u";
+            } else {
+              console.log("¡Por ahí hay una pared!");
+              console.log();
+            }
+            move += 1;
+            break;
+          case 3: // Mover abajo
+            if (playerRow < maze.length - 1 && maze[playerRow + 1][playerCol] !== "#") {
+              maze[playerRow][playerCol] = " ";
+              playerRow++;
+              maze[playerRow][playerCol] = "u";
+            } else {
+              console.log("¡Por ahí hay una pared!");
+              console.log();
+            }
+            move += 1;
+            break;
+          case 4: // Mover derecha
+            if (playerCol < maze[0].length - 1 && maze[playerRow][playerCol + 1] !== "#") {
+              maze[playerRow][playerCol] = " ";
+              playerCol++;
+              maze[playerRow][playerCol] = "u";
+            } else {
+              console.log("¡Por ahí hay una pared!");
+              console.log();
+            }
+            move += 1;
+            break;
         }
-      }
+        
+        totalCasillas = casillaO + casillaU + way + 2;
 
-      // Derrota
-      if (move > totalCasillas) {
-        console.clear();
-        console.log("¡Has perdido!");
-        console.log();
-        console.log("Has hecho", move, "movimientos de los", totalCasillas, "que tienes para pasar el nivel.");
-        console.log();
-        prompt("Presiona enter para salir...");
-        subMenuOption = 3; // Salir del juego
-        back = false;
+        // Victoria
+        if (playerRow === exitRow && playerCol === exitCol) {
+          console.clear();
+          console.log("¡Felicidades, has encontrado la salida!");
+          console.log();
+          console.log("Te has pasado el laberinto con", move, "movimientos de los", totalCasillas, "que puedes hacer.");
+          console.log();
+          prompt("Presiona enter para volver...")
+          subMenuOption = 3; // Salir del juego
+          back = false;
+        } else {
+          for (let i = 0; i < maze.length; i++) {
+            console.log(maze[i].join(" "));
+          }
+        }
+
+        // Derrota
+        if (move > totalCasillas) {
+          console.clear();
+          console.log("¡Has perdido!");
+          console.log();
+          console.log("Has hecho", move, "movimientos de los", totalCasillas, "que tienes para pasar el nivel.");
+          console.log();
+          prompt("Presiona enter para salir...")
+          subMenuOption = 3; // Salir del juego
+          back = false;
+        }
+
       }
+    } else if (subMenuOption === 3) {
+      back = false;
     }
-  } else if (subMenuOption === 3) {
-    back = false;
   }
-}
 }
